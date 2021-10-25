@@ -28,3 +28,5 @@ build/
 .classpath
 .project
 .settings/
+
+jacoco.xml
