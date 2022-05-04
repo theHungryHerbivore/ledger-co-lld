@@ -1,4 +1,4 @@
 /*Please add your sample inputs 
-here specific to the probelm statement*/
+here specific to the problem statement*/
 <INPUT_COMMAND_1> <ARGUMENT>
 <INPUT_COMMAND_2> <ARGUMENT>
