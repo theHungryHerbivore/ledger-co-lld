@@ -1,7 +1,7 @@
 package com.example.geektrust.model.commands;
 
 import com.example.geektrust.exceptions.InvalidCommandDetailsException;
-import com.example.geektrust.factory.commandfactory.LoanFactory;
+import com.example.geektrust.factory.LoanFactory;
 import com.example.geektrust.model.Bank;
 import com.example.geektrust.model.Customer;
 import com.example.geektrust.model.Loan;

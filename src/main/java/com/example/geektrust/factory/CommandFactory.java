@@ -1,4 +1,4 @@
-package com.example.geektrust.factory.commandfactory;
+package com.example.geektrust.factory;
 
 import com.example.geektrust.model.commands.BalanceCommand;
 import com.example.geektrust.model.commands.Command;

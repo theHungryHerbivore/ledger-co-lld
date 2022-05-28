@@ -1,6 +1,7 @@
 package com.example.geektrust;
 
 import com.example.geektrust.exceptions.InvalidInputException;
+import com.example.geektrust.factory.CommandFactory;
 import com.example.geektrust.factory.commandfactory.*;
 import com.example.geektrust.model.Bank;
 import com.example.geektrust.model.Customer;
