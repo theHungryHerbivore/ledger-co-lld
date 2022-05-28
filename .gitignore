@@ -30,3 +30,6 @@ build/
 .settings/
 
 jacoco.xml
+
+#the .idea folder
+.idea/*
