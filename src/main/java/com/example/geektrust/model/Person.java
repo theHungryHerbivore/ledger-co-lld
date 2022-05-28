@@ -1,13 +1,9 @@
 package com.example.geektrust.model;
 
 public class Person {
-    private String name;
+    private final String name;
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
+    public Person(String name) {
         this.name = name;
     }
 }
