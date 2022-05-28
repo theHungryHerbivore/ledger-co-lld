@@ -8,7 +8,7 @@ public class Loan {
     private Double principle;
     private Double interest;
     private Double term;
-    private Map<Integer, Double> payments;
+    private Map<Integer, Integer> payments;
     private Double totalPayableAmount;
 
     public Loan(Bank bank, Customer customer, Double principle, Double interest, Double term) {
@@ -18,5 +18,37 @@ public class Loan {
         this.interest = interest;
         this.term = term;
         this.totalPayableAmount = principle + (principle * interest * term)/100;
+    }
+
+    public Bank getBank() {
+        return bank;
+    }
+
+    public Customer getCustomer() {
+        return customer;
+    }
+
+    public Double getPrinciple() {
+        return principle;
+    }
+
+    public Double getInterest() {
+        return interest;
+    }
+
+    public Double getTerm() {
+        return term;
+    }
+
+    public Map<Integer, Integer> getPayments() {
+        return payments;
+    }
+
+    public Double getTotalPayableAmount() {
+        return totalPayableAmount;
+    }
+
+    public void addPayment(Integer installment, Integer amount){
+        payments.put(installment, amount);
     }
 }

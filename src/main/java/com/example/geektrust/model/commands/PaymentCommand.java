@@ -6,12 +6,12 @@ import com.example.geektrust.model.Customer;
 import com.example.geektrust.model.Loan;
 
 import java.util.Arrays;
+import java.util.List;
 import java.util.Map;
-import java.util.Set;
 
 public class PaymentCommand implements Command {
     @Override
-    public void execute(Set<Loan> loans, Map<String, Customer> customers, Map<String, Bank> banks, String[] details) {
+    public void execute(List<Loan> loans, Map<String, Customer> customers, Map<String, Bank> banks, String[] details) {
         if (!isValid(details)) {
             throw new InvalidCommandDetailsException("Please Validate details for the PAYMENT Command : " + Arrays.toString(details));
         }
@@ -20,10 +20,16 @@ public class PaymentCommand implements Command {
         Customer customer = customers.get(details[2]);
         Integer lumpsum = Integer.parseInt(details[3]);
         Integer emi = Integer.parseInt(details[4]);
+        Loan loan = getLoanForPayment(bank, customer, loans);
+        loan.addPayment(emi, lumpsum);
     }
 
     @Override
     public boolean isValid(String[] details) {
         return details != null && details.length == 5;
+    }
+
+    private Loan getLoanForPayment(Bank bank, Customer customer, List<Loan> loans){
+        return loans.stream().filter( loan -> customer.equals(loan.getCustomer()) && bank.equals(loan.getBank())).findAny().orElse(null);
     }
 }

@@ -9,13 +9,13 @@ import com.example.geektrust.model.Loan;
 import java.util.*;
 
 public class Ledger {
-    Set<Loan> loans;
+    List<Loan> loans;
     Map<String, Customer> customers;
     Map<String, Bank> banks;
     CommandFactory commandFactory;
 
     public Ledger() {
-        this.loans = new HashSet<>();
+        this.loans = new ArrayList<>();
         this.customers = new HashMap<>();
         this.banks = new HashMap<>();
         commandFactory = new CommandFactory();
