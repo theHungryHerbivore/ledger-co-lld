@@ -1,5 +1,6 @@
 package com.example.geektrust.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Customer extends Person {
@@ -7,5 +8,14 @@ public class Customer extends Person {
 
     public Customer(String name) {
         super(name);
+        this.loans = new ArrayList<>();
+    }
+
+    public List<Loan> getLoans() {
+        return loans;
+    }
+
+    public void addLoan(Loan loan){
+        loans.add(loan);
     }
 }
