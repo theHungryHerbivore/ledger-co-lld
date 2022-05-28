@@ -1,7 +1,13 @@
-package com.example.geektrust; 
+package com.example.geektrust;
+
+import com.example.geektrust.service.FileReaderService;
+
+import java.io.IOException;
+import java.util.List;
 
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
+        List <String> commands = FileReaderService.readFile(args[0]);
 
     }
 }
