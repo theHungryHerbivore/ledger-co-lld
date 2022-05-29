@@ -28,6 +28,4 @@ class FileReaderServiceTest {
             FileReaderService.readFile(path);
         },"IOException was expected");
     }
-
-
 }
