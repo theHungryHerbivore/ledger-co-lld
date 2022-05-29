@@ -37,10 +37,23 @@ public class LoanCommand implements Command {
         return details != null && details.length == 6;
     }
 
-    public Customer getCustomer(Map<String, Customer> customers, String customerName){
-        return customers.getOrDefault(customerName, new Customer(customerName));
+    public Customer getCustomer(Map<String, Customer> customers, String customerName) {
+        return customers.getOrDefault(customerName, addNewCustomer(customerName, customers));
     }
-    public Bank getBank(Map<String, Bank> banks, String bankName){
-        return banks.getOrDefault(bankName, new Bank(bankName));
+
+    public Bank getBank(Map<String, Bank> banks, String bankName) {
+        return banks.getOrDefault(bankName, addNewBank(bankName, banks));
+    }
+
+    private Customer addNewCustomer(String customerName, Map<String, Customer> customers) {
+        Customer customer = new Customer(customerName);
+        customers.put(customerName, customer);
+        return customer;
+    }
+
+    private Bank addNewBank(String bankName, Map<String, Bank> banks) {
+        Bank bank = new Bank(bankName);
+        banks.put(bankName, bank);
+        return bank;
     }
 }

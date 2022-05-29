@@ -37,6 +37,7 @@ public class Ledger {
                     break;
                 case "BALANCE":
                     commandFactory.getBalanceCommand().execute(loans, customers, banks, details);
+                    break;
                 default:
                     throw new InvalidInputException("We do not serve this command : " + commandType);
             }

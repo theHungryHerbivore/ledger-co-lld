@@ -34,9 +34,4 @@ public class BalanceCommand implements Command{
     public boolean isValid(String[] details) {
         return details!= null && details.length == 4;
     }
-
-    @Override
-    public Loan getLoan(Bank bank, Customer customer, List<Loan> loans) {
-        return null;
-    }
 }
