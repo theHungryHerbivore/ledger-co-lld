@@ -4,7 +4,6 @@ import com.example.geektrust.factory.CommandFactory;
 import com.example.geektrust.model.Bank;
 import com.example.geektrust.model.Customer;
 import com.example.geektrust.model.Loan;
-import junit.framework.Assert;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
