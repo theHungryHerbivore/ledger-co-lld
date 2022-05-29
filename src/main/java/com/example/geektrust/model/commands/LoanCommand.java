@@ -28,7 +28,7 @@ public class LoanCommand implements Command {
         Double principle = Double.parseDouble(details[3]);
         Double term = Double.parseDouble(details[4]);
         Double interest = Double.parseDouble(details[5]);
-        Loan loan = loanFactory.getLoanOrCreate(bank, customer, principle, interest, term);
+        Loan loan = loanFactory.getLoan(bank, customer, principle, interest, term);
         loans.add(loan);
         customer.addLoan(loan);
     }
