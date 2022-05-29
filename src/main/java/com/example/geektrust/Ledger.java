@@ -1,6 +1,6 @@
 package com.example.geektrust;
 
-import com.example.geektrust.exceptions.InvalidInputException;
+import com.example.geektrust.exceptions.IllegalInputException;
 import com.example.geektrust.factory.CommandFactory;
 import com.example.geektrust.model.Bank;
 import com.example.geektrust.model.Customer;
@@ -39,7 +39,7 @@ public class Ledger {
                     commandFactory.getBalanceCommand().execute(loans, customers, banks, details);
                     break;
                 default:
-                    throw new InvalidInputException("We do not serve this command : " + commandType);
+                    throw new IllegalInputException("We do not serve this command : " + commandType);
             }
         }
     }
