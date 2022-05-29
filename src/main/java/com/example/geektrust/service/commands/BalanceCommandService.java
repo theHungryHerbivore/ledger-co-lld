@@ -1,5 +1,6 @@
 package com.example.geektrust.service.commands;
 
+import com.example.geektrust.constants.CommandLength;
 import com.example.geektrust.exceptions.IllegalInvalidCommandDetailsException;
 import com.example.geektrust.model.Bank;
 import com.example.geektrust.model.Customer;
@@ -32,6 +33,6 @@ public class BalanceCommandService implements CommandService {
 
     @Override
     public boolean isValid(String[] details) {
-        return details!= null && details.length == 4;
+        return details!= null && details.length == CommandLength.BALANCE_COMMAND_LENGTH;
     }
 }

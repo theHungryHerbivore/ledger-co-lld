@@ -1,5 +1,6 @@
 package com.example.geektrust.service.commands;
 
+import com.example.geektrust.constants.CommandLength;
 import com.example.geektrust.exceptions.IllegalInvalidCommandDetailsException;
 import com.example.geektrust.factory.BankFactory;
 import com.example.geektrust.factory.CustomerFactory;
@@ -41,7 +42,7 @@ public class LoanCommandService implements CommandService {
 
     @Override
     public boolean isValid(String[] details) {
-        return details != null && details.length == 6;
+        return details != null && details.length == CommandLength.LOAN_COMMAND_LENGTH;
     }
 
     public Customer getCustomer(Map<String, Customer> customers, String customerName) {

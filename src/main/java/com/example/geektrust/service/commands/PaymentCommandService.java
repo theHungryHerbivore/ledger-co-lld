@@ -1,5 +1,6 @@
 package com.example.geektrust.service.commands;
 
+import com.example.geektrust.constants.CommandLength;
 import com.example.geektrust.exceptions.IllegalInvalidCommandDetailsException;
 import com.example.geektrust.model.Bank;
 import com.example.geektrust.model.Customer;
@@ -26,7 +27,7 @@ public class PaymentCommandService implements CommandService {
 
     @Override
     public boolean isValid(String[] details) {
-        return details != null && details.length == 5;
+        return details != null && details.length == CommandLength.PAYMENT_COMMAND_LENGTH;
     }
 
 
