@@ -17,11 +17,11 @@ public class Ledger {
     Map<String, Bank> banks;
     CommandFactory commandFactory;
 
-    public Ledger() {
+    public Ledger(CommandFactory commandFactory) {
         this.loans = new ArrayList<>();
         this.customers = new HashMap<>();
         this.banks = new HashMap<>();
-        commandFactory = new CommandFactory();
+        this.commandFactory = commandFactory;
     }
 
     public void process(List<String> commands) {
