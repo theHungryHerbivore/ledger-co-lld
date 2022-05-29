@@ -1,5 +1,6 @@
 package com.example.geektrust.service;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
@@ -19,5 +20,14 @@ class FileReaderServiceTest {
         assertNotSame(input, expected);
         assertEquals(input, expected);
     }
+
+    @Test
+    public void readFile_throwsExceptionWhenInvalidFilePath(){
+        String path = "someNonExistingPath";
+        Assertions.assertThrows(IOException.class, () ->{
+            FileReaderService.readFile(path);
+        },"IOException was expected");
+    }
+
 
 }
