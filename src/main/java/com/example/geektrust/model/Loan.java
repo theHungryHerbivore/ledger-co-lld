@@ -55,7 +55,7 @@ public class Loan {
     }
 
     public Integer getAmountPaid(Integer installment){
-        Integer lumpSum =  payments.getOrDefault(installment, 0);
+        Integer lumpSum =  payments.entrySet().stream().filter(e -> e.getKey() <= installment).mapToInt(Map.Entry::getValue).sum();
         Integer totalEmis = installment * emiAmount;
         Integer totalAmountToBePaid = Math.toIntExact(Math.round(amount));
         return Math.min(lumpSum + totalEmis, totalAmountToBePaid);
@@ -77,7 +77,7 @@ public class Loan {
         return  (int)Math.ceil(term * 12);
     }
 
-    private Integer computeEmiAmount(Double amount, Integer term){
-        return (int) Math.ceil(amount / term * 12);
+    private Integer computeEmiAmount(Double amount, Integer noOfEmis){
+        return (int) Math.ceil(amount / noOfEmis);
     }
 }
