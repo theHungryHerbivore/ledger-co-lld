@@ -60,10 +60,11 @@ class BalanceCommandTest {
 
     @Test
     public void execute_calculatesTheBalance(){
+        details = new String[]{"BALANCE", "IDIDI", "Dale" ,"5"};
         bankMap.put("IDIDI", new Bank("IDIDI"));
         customerMap.put("Dale", new Customer("Dale"));
         loanList.add(new Loan(bankMap.get("IDIDI"), customerMap.get("Dale"), 10000,4,5));
-        balanceCommand.execute(loanList,customerMap,bankMap, new String[]{"BALANCE", "IDIDI", "Dale" ,"5"});
+        balanceCommand.execute(loanList,customerMap,bankMap, details);
         assertEquals("IDIDI Dale 1000 55", outContent.toString().trim());
 
     }

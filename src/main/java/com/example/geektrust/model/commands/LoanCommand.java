@@ -9,6 +9,7 @@ import com.example.geektrust.model.Loan;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 public class LoanCommand implements Command {
     private final LoanFactory loanFactory;
@@ -38,11 +39,11 @@ public class LoanCommand implements Command {
     }
 
     public Customer getCustomer(Map<String, Customer> customers, String customerName) {
-        return customers.getOrDefault(customerName, addNewCustomer(customerName, customers));
+        return Optional.ofNullable(customers.get(customerName)).orElse(addNewCustomer(customerName, customers));
     }
 
     public Bank getBank(Map<String, Bank> banks, String bankName) {
-        return banks.getOrDefault(bankName, addNewBank(bankName, banks));
+        return Optional.ofNullable(banks.get(bankName)).orElse(addNewBank(bankName, banks));
     }
 
     private Customer addNewCustomer(String customerName, Map<String, Customer> customers) {
