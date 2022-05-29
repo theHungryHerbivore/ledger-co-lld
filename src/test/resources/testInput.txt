@@ -1,0 +1,3 @@
+testInput1
+testInput2
+testInput3$3
