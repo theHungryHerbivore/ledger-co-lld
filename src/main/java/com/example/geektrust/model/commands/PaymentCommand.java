@@ -20,7 +20,7 @@ public class PaymentCommand implements Command {
         Customer customer = customers.get(details[2]);
         Integer lumpsum = Integer.parseInt(details[3]);
         Integer emi = Integer.parseInt(details[4]);
-        Loan loan = getLoanForPayment(bank, customer, loans);
+        Loan loan = getLoan(bank, customer, loans);
         loan.addPayment(emi, lumpsum);
     }
 
@@ -29,7 +29,5 @@ public class PaymentCommand implements Command {
         return details != null && details.length == 5;
     }
 
-    private Loan getLoanForPayment(Bank bank, Customer customer, List<Loan> loans){
-        return loans.stream().filter( loan -> customer.equals(loan.getCustomer()) && bank.equals(loan.getBank())).findAny().orElse(null);
-    }
+
 }

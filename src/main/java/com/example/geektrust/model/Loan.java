@@ -1,23 +1,29 @@
 package com.example.geektrust.model;
 
+import java.util.HashMap;
 import java.util.Map;
 
 public class Loan {
-    private Bank bank;
-    private Customer customer;
-    private Double principle;
-    private Double interest;
-    private Double term;
-    private Map<Integer, Integer> payments;
-    private Double totalPayableAmount;
+    private  Bank bank;
+    private  Customer customer;
+    private  double principle;
+    private  double interest;
+    private  double term;
+    private  Map<Integer, Integer> payments;
+    private  double amount;
+    private Integer noOfEmis;
+    private Integer emiAmount;
 
-    public Loan(Bank bank, Customer customer, Double principle, Double interest, Double term) {
+    public Loan(Bank bank, Customer customer, double principle, double interest, double term) {
+        this.payments = new HashMap<>();
         this.bank = bank;
         this.customer = customer;
         this.principle = principle;
         this.interest = interest;
         this.term = term;
-        this.totalPayableAmount = principle + (principle * interest * term)/100;
+        this.amount = computeAmount(principle, interest, term);
+        this.noOfEmis = computeNoOfEMIs(term);
+        this.emiAmount = computeEmiAmount(amount, noOfEmis);
     }
 
     public Bank getBank() {
@@ -28,15 +34,15 @@ public class Loan {
         return customer;
     }
 
-    public Double getPrinciple() {
+    public double getPrinciple() {
         return principle;
     }
 
-    public Double getInterest() {
+    public double getInterest() {
         return interest;
     }
 
-    public Double getTerm() {
+    public double getTerm() {
         return term;
     }
 
@@ -44,11 +50,29 @@ public class Loan {
         return payments;
     }
 
-    public Double getTotalPayableAmount() {
-        return totalPayableAmount;
+    public double getAmount() {
+        return amount;
+    }
+
+    public Integer getAmountPaid(Integer installment){
+        Integer lumpSum =  payments.getOrDefault(installment, 0);
+        Integer totalEmis = installment * emiAmount;
+        return lumpSum + totalEmis;
     }
 
     public void addPayment(Integer installment, Integer amount){
         payments.put(installment, amount);
+    }
+
+    private double computeAmount(double principle, double interest, double term){
+        return principle + (principle * interest * term)/100;
+    }
+
+    private Integer computeNoOfEMIs(double term){
+        return  (int)Math.ceil(term * 12);
+    }
+
+    private Integer computeEmiAmount(Double amount, Integer term){
+        return (int) Math.ceil(amount / term * 12);
     }
 }
