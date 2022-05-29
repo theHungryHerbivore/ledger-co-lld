@@ -4,6 +4,7 @@ import com.example.geektrust.factory.CommandFactory;
 import com.example.geektrust.model.Bank;
 import com.example.geektrust.model.Customer;
 import com.example.geektrust.model.Loan;
+import com.example.geektrust.service.commands.CommandService;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -22,7 +23,7 @@ class BalanceCommandTest {
     private Map<String, Customer> customerMap;
     private String[] details;
     private List<Loan> loanList;
-    private Command balanceCommand;
+    private CommandService balanceCommand;
     private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
     private final ByteArrayOutputStream errContent = new ByteArrayOutputStream();
     private final PrintStream originalOut = System.out;

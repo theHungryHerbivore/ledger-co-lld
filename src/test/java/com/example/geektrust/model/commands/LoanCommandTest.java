@@ -4,6 +4,7 @@ import com.example.geektrust.factory.CommandFactory;
 import com.example.geektrust.model.Bank;
 import com.example.geektrust.model.Customer;
 import com.example.geektrust.model.Loan;
+import com.example.geektrust.service.commands.CommandService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -20,7 +21,7 @@ class LoanCommandTest {
     private Map<String, Customer> customerMap;
     private String[] details;
     private List<Loan> loanList;
-    private Command loanCommand;
+    private CommandService loanCommand;
 
     @BeforeEach
     public void init() {

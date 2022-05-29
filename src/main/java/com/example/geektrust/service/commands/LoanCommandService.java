@@ -1,4 +1,4 @@
-package com.example.geektrust.model.commands;
+package com.example.geektrust.service.commands;
 
 import com.example.geektrust.exceptions.IllegalInvalidCommandDetailsException;
 import com.example.geektrust.factory.BankFactory;
@@ -13,12 +13,12 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
-public class LoanCommand implements Command {
+public class LoanCommandService implements CommandService {
     private final LoanFactory loanFactory;
     private final CustomerFactory customerFactory;
     private final BankFactory bankFactory;
 
-    public LoanCommand(LoanFactory loanFactory, CustomerFactory customerFactory, BankFactory bankFactory) {
+    public LoanCommandService(LoanFactory loanFactory, CustomerFactory customerFactory, BankFactory bankFactory) {
         this.loanFactory = loanFactory;
         this.customerFactory = customerFactory;
         this.bankFactory = bankFactory;

@@ -1,20 +1,20 @@
 package com.example.geektrust.factory;
 
-import com.example.geektrust.model.commands.BalanceCommand;
-import com.example.geektrust.model.commands.Command;
-import com.example.geektrust.model.commands.LoanCommand;
-import com.example.geektrust.model.commands.PaymentCommand;
+import com.example.geektrust.service.commands.BalanceCommandService;
+import com.example.geektrust.service.commands.CommandService;
+import com.example.geektrust.service.commands.LoanCommandService;
+import com.example.geektrust.service.commands.PaymentCommandService;
 
 public class CommandFactory {
-    public Command getLoanCommand(){
-        return new LoanCommand(new LoanFactory(), new CustomerFactory(), new BankFactory());
+    public CommandService getLoanCommand(){
+        return new LoanCommandService(new LoanFactory(), new CustomerFactory(), new BankFactory());
     }
 
-    public Command getBalanceCommand(){
-        return new BalanceCommand();
+    public CommandService getBalanceCommand(){
+        return new BalanceCommandService();
     }
 
-    public Command getPaymentCommand(){
-        return new PaymentCommand();
+    public CommandService getPaymentCommand(){
+        return new PaymentCommandService();
     }
 }

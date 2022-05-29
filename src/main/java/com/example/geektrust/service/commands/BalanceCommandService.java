@@ -1,4 +1,4 @@
-package com.example.geektrust.model.commands;
+package com.example.geektrust.service.commands;
 
 import com.example.geektrust.exceptions.IllegalInvalidCommandDetailsException;
 import com.example.geektrust.model.Bank;
@@ -9,7 +9,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
-public class BalanceCommand implements Command{
+public class BalanceCommandService implements CommandService {
     @Override
     public void execute(List<Loan> loans, Map<String, Customer> customers, Map<String, Bank> banks, String[] details) {
         if (!isValid(details)) {
