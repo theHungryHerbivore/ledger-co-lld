@@ -1,6 +1,8 @@
 package com.example.geektrust.model.commands;
 
 import com.example.geektrust.exceptions.InvalidCommandDetailsException;
+import com.example.geektrust.factory.BankFactory;
+import com.example.geektrust.factory.CustomerFactory;
 import com.example.geektrust.factory.LoanFactory;
 import com.example.geektrust.model.Bank;
 import com.example.geektrust.model.Customer;
@@ -13,9 +15,13 @@ import java.util.Optional;
 
 public class LoanCommand implements Command {
     private final LoanFactory loanFactory;
+    private final CustomerFactory customerFactory;
+    private final BankFactory bankFactory;
 
-    public LoanCommand(LoanFactory loanFactory) {
+    public LoanCommand(LoanFactory loanFactory, CustomerFactory customerFactory, BankFactory bankFactory) {
         this.loanFactory = loanFactory;
+        this.customerFactory = customerFactory;
+        this.bankFactory = bankFactory;
     }
 
     @Override
@@ -47,13 +53,13 @@ public class LoanCommand implements Command {
     }
 
     private Customer addNewCustomer(String customerName, Map<String, Customer> customers) {
-        Customer customer = new Customer(customerName);
+        Customer customer = customerFactory.getCustomer(customerName);
         customers.put(customerName, customer);
         return customer;
     }
 
     private Bank addNewBank(String bankName, Map<String, Bank> banks) {
-        Bank bank = new Bank(bankName);
+        Bank bank = bankFactory.getBank(bankName);
         banks.put(bankName, bank);
         return bank;
     }

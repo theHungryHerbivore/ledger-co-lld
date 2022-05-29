@@ -7,7 +7,7 @@ import com.example.geektrust.model.commands.PaymentCommand;
 
 public class CommandFactory {
     public Command getLoanCommand(){
-        return new LoanCommand(new LoanFactory());
+        return new LoanCommand(new LoanFactory(), new CustomerFactory(), new BankFactory());
     }
 
     public Command getBalanceCommand(){
