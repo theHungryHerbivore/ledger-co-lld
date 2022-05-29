@@ -10,5 +10,4 @@ import java.util.Map;
 public interface Command {
     public void execute(List<Loan> loans, Map<String, Customer> customers, Map<String, Bank> banks, String[] details);
     public boolean isValid(String[] details);
-
 }
