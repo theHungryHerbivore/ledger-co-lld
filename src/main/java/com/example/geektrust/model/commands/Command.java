@@ -8,6 +8,6 @@ import java.util.List;
 import java.util.Map;
 
 public interface Command {
-    public void execute(List<Loan> loans, Map<String, Customer> customers, Map<String, Bank> banks, String[] details);
-    public boolean isValid(String[] details);
+    void execute(List<Loan> loans, Map<String, Customer> customers, Map<String, Bank> banks, String[] details);
+    boolean isValid(String[] details);
 }
