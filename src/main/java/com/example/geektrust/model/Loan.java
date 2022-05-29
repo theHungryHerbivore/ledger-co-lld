@@ -57,7 +57,12 @@ public class Loan {
     public Integer getAmountPaid(Integer installment){
         Integer lumpSum =  payments.getOrDefault(installment, 0);
         Integer totalEmis = installment * emiAmount;
-        return lumpSum + totalEmis;
+        Integer totalAmountToBePaid = Math.toIntExact(Math.round(amount));
+        return Math.min(lumpSum + totalEmis, totalAmountToBePaid);
+    }
+
+    public Integer getRemainingEmis(Integer amountPaid){
+        return (int) Math.ceil((amount - amountPaid)/ emiAmount);
     }
 
     public void addPayment(Integer installment, Integer amount){

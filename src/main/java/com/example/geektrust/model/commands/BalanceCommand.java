@@ -21,7 +21,13 @@ public class BalanceCommand implements Command{
         Loan loan = getLoan(bank, customer, loans);
 
         Integer amountPaid = loan.getAmountPaid(installment);
+        Integer emisRemaining = loan.getRemainingEmis(amountPaid);
 
+        printBalanceDetails(bank, customer, amountPaid, emisRemaining);
+    }
+
+    public void printBalanceDetails(Bank bank, Customer customer, Integer amountPaid, Integer emisRemaining){
+        System.out.println(bank.getName() + " " + customer.getName() + " " + amountPaid + " " + emisRemaining);
     }
 
     @Override
