@@ -1,7 +1,7 @@
 package com.example.geektrust.service.commands;
 
 import com.example.geektrust.constants.CommandLength;
-import com.example.geektrust.exceptions.IllegalInvalidCommandDetailsException;
+import com.example.geektrust.exceptions.IllegalCommandException;
 import com.example.geektrust.model.Bank;
 import com.example.geektrust.model.Customer;
 import com.example.geektrust.model.Loan;
@@ -14,7 +14,7 @@ public class PaymentCommandService implements CommandService {
     @Override
     public void execute(List<Loan> loans, Map<String, Customer> customers, Map<String, Bank> banks, String[] details) {
         if (!isValid(details)) {
-            throw new IllegalInvalidCommandDetailsException("Please Validate details for the PAYMENT Command : " + Arrays.toString(details));
+            throw new IllegalCommandException("Please Validate details for the PAYMENT Command : " + Arrays.toString(details));
         }
 
         Bank bank = banks.get(details[1]);
