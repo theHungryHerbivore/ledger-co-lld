@@ -1,5 +1,6 @@
 package com.example.geektrust.model.commands;
 
+import com.example.geektrust.exceptions.IllegalOperationException;
 import com.example.geektrust.factory.CommandFactory;
 import com.example.geektrust.model.Bank;
 import com.example.geektrust.model.Customer;
@@ -70,4 +71,34 @@ class BalanceCommandTest {
 
     }
 
+    @Test
+    public void execute_throwsIfBankDoesNotExist(){
+        details = new String[]{"BALANCE", "IDIDI", "Dale" ,"5"};
+        bankMap.put("IDFC", new Bank("IDID"));
+        customerMap.put("Dale", new Customer("Dale"));
+        loanList.add(new Loan(bankMap.get("IDIDI"), customerMap.get("Dale"), 10000,4,5));
+        Exception exception = assertThrows(IllegalOperationException.class,()-> balanceCommand.execute(loanList,customerMap,bankMap, details));
+        assertEquals("bank IDIDI does not exist", exception.getMessage());
+    }
+
+    @Test
+    public void execute_throwsIfCustomerDoesNotExist(){
+        details = new String[]{"BALANCE", "IDIDI", "Dale" ,"5"};
+        bankMap.put("IDIDI", new Bank("IDID"));
+        customerMap.put("John", new Customer("Dale"));
+        loanList.add(new Loan(bankMap.get("IDIDI"), customerMap.get("Dale"), 10000,4,5));
+        Exception exception = assertThrows(IllegalOperationException.class,()-> balanceCommand.execute(loanList,customerMap,bankMap, details));
+        assertEquals("customer Dale does not exist", exception.getMessage());
+    }
+
+    @Test
+    public void execute_throwsIfLoanDoesNotExist(){
+        details = new String[]{"BALANCE", "IDIDI", "Dale" ,"5"};
+        bankMap.put("IDIDI", new Bank("IDIDI"));
+        bankMap.put("IDFC", new Bank("IDFC"));
+        customerMap.put("Dale", new Customer("Dale"));
+        loanList.add(new Loan(bankMap.get("IDFC"), customerMap.get("Dale"), 10000,4,5));
+        Exception exception = assertThrows(IllegalOperationException.class,()-> balanceCommand.execute(loanList,customerMap,bankMap, details));
+        assertEquals("No loan exists for customer: Dale in bank : IDIDI", exception.getMessage());
+    }
 }

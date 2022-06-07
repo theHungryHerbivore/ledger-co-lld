@@ -2,6 +2,7 @@ package com.example.geektrust.service.commands;
 
 import com.example.geektrust.constants.CommandLength;
 import com.example.geektrust.exceptions.IllegalCommandException;
+import com.example.geektrust.exceptions.IllegalOperationException;
 import com.example.geektrust.model.Bank;
 import com.example.geektrust.model.Customer;
 import com.example.geektrust.model.Loan;
@@ -9,6 +10,7 @@ import com.example.geektrust.model.Loan;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 public class BalanceCommandService implements CommandService {
     @Override
@@ -16,8 +18,8 @@ public class BalanceCommandService implements CommandService {
         if (!isValid(details)) {
             throw new IllegalCommandException("Please Validate details for the BALANCE Command : " + Arrays.toString(details));
         }
-        Bank bank = banks.get(details[1]);
-        Customer customer = customers.get(details[2]);
+        Bank bank = Optional.ofNullable(banks.get(details[1])).orElseThrow(()-> new IllegalOperationException("bank "+ details[1] + " does not exist"));
+        Customer customer = Optional.ofNullable(customers.get(details[2])).orElseThrow(()-> new IllegalOperationException("customer "+ details[2] + " does not exist")) ;
         Integer installment = Integer.parseInt(details[3]);
         Loan loan = getLoan(bank, customer, loans);
 
